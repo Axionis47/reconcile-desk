@@ -1,17 +1,18 @@
 # Source budget
 
-Limit: **1,000 nonblank authored source lines**. Current count: **733**, including tests, the counting utility, styles, layout, and favicon. Blank lines are excluded; comments are included. This is a physical source-line measure, not a claim about program complexity.
+Limit: **1,000 nonblank authored source lines**. Current count: **804**, including tests, the counting utility, styles, layout, and favicon. Blank lines are excluded; comments are included. This is a physical source-line measure, not a claim about program complexity.
 
 | Authored file | Nonblank lines |
 | --- | ---: |
-| app/page.tsx | 318 |
+| app/page.tsx | 322 |
 | app/model.ts | 113 |
-| app/globals.css | 152 |
+| app/legacy-settlement.tsx | 66 |
+| app/globals.css | 153 |
 | app/layout.tsx | 30 |
 | tests/model.test.mjs | 100 |
 | scripts/count-lines.mjs | 16 |
 | public/favicon.svg | 4 |
-| **Total** | **733** |
+| **Total** | **804** |
 
 Reproduce with `node scripts/count-lines.mjs`. It exits unsuccessfully above the limit. It counts every TypeScript, JavaScript module, CSS and SVG file under app, tests, scripts and public.
 

@@ -9,6 +9,7 @@ import { Sidebar, SidebarProvider, SidebarContent, SidebarHeader, SidebarFooter,
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { AlertDialog, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogCancel, AlertDialogAction } from '@/components/ui/alert-dialog';
 import { Textarea } from '@/components/ui/textarea';
+import { LegacySettlement } from './legacy-settlement';
 import { initial, reducer, money, totals, used, type Entry } from './model';
 export default function Home() {
   const [state, dispatch] = useReducer(reducer, undefined, () => initial());
@@ -42,6 +43,9 @@ export default function Home() {
   function ledger(prefix: string, title: string, subtitle: string) {
     const entries = state.entries.filter(r => r.id.startsWith(prefix) && (filter !== 'Unmatched' || !used(state, r.id)) && `${r.id} ${r.party} ${r.ref}`.toLowerCase().includes(query.toLowerCase()));
     if (reverse) entries.reverse();
+    if (prefix === 'P-') return <LegacySettlement entries={entries} selected={state.selected}
+      disabled={locked || view === 'Trace payment'} isUsed={id => used(state, id)}
+      onSelect={id => dispatch({ type: 'select', id, actor: state.owner })} onInspect={setDetail} />;
     return <section className="ledger" aria-label={title}>
       <div className="ledger-heading">
       <div>

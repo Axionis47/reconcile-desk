@@ -18,3 +18,5 @@ The app should feel like a focused settlement desk: a dark forest-green navigati
 - Do not label simulated controls as real authentication. Do not imply financial execution or production security.
 
 Implementation uses the starter's accessible sidebar, buttons, inputs, checkboxes, tables, sheet and alert-dialog components. Shared colors and responsive rules are in the app stylesheet. Verification so far covers compilation and domain tests, not a browser accessibility audit.
+
+The processor terminal deliberately uses a cream background, compact system typography, nested layout tables, ordinary cell headings, and repeated Select/Open buttons inside a scrollable iframe. Keep identity, reference, amount and status visible together. Preserve keyboard focus and activation even though semantic table metadata and unique control labels are intentionally absent. The modern internal ledger and parent action bar remain unchanged.

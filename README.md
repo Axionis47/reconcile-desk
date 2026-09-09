@@ -32,7 +32,7 @@ Scenario lab adds controlled delays, an expired-session simulation, an unfamilia
 | Layout variation | Reverse row order, narrow window, enable embedded notice | Resolve records by identity and frame context, not row position |
 | Undo | Undo a completed group | Original entries available; approval for that group revoked |
 
-The twelve automated tests cover domain invariants and handoff transitions. The production build and TypeScript checks validate compilation. Browser interaction and visual QA have not been performed. The iframe demonstrates a separate document; it is not a claim of cross-origin browser automation coverage.
+The twelve automated tests cover domain invariants and handoff transitions. The production build and TypeScript checks validate compilation. Browser interaction and visual QA have not been performed. The processor ledger is now a task-critical, same-origin iframe with nested layout tables, plain cell headings, repeated Select/Open buttons, and no dedicated test IDs or row-ID attributes. Every reconciliation requires selecting a processor entry there. Search, sorting, matched states, operator ownership and read-only tracing propagate into the frame. The optional notice remains separate. This is not a claim of cross-origin or native automation coverage.
 
 ## Keep the evaluation honest
 
@@ -49,3 +49,11 @@ All financial data is fictional. There are no payments, external integrations, c
 For production tenancy, derive tenant and operator identity on the server; scope sessions, artifacts, records and evidence to that tenant; enforce authorization server-side; isolate browser profiles and secrets per run. For native-app extension, keep workflow steps and checkpoints independent of the browser adapter, then implement observation and action adapters for OS accessibility and screenshots. Those are future agent design requirements, not functionality delivered by this small target app.
 
 Review evidence records the corrected selection and the operator reason. It does not automatically rewrite a future automation artifact. The future engine should capture intervention observations, propose a new artifact version separately, and validate it before reuse. Only supported, verified checkpoints may resume; there is no global optimal-path guarantee.
+
+## Legacy surface version
+
+Processor selection now happens only inside the Legacy settlement terminal iframe. The automation must enter the correct frame, identify a row by visible payment identity and reference, then use its repeated Select or Open control. Numeric position is unreliable after reversing the row order. The internal ledger remains semantic, giving the agent a mixed modern/legacy workflow.
+
+Plain buttons retain keyboard activation and focus indicators; difficulty comes from frame context and weak table semantics, not invisible controls. The iframe uses the same app state and reconciliation checks as the main workspace, including disabled selections during handoff. It is a same-origin document rendered through a React portal, with scripts inside the frame disabled. The agent must still interact through the UI; the portal is implementation plumbing, not an automation API.
+
+Acceptance walkthrough: select L-102 and L-103 in the main ledger; enter the settlement frame; locate Harbor / P-202 and Select it; confirm both totals in the parent; reconcile. Repeat after reversing row order. For handoff, select L-104 and P-204, request review, take control, change the framed selection to P-203, approve, resume, and reconcile. No processor Select button should be enabled during waiting or ready states, or in Trace payment.
